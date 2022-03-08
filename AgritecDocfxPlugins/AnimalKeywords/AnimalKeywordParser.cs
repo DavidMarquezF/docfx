@@ -3,7 +3,7 @@ using Markdig.Parsers;
 
 namespace AgritecDocfxPlugins.AnimalKeywords;
 
-internal class AnimalKeywordParser : InlineParser
+public class AnimalKeywordParser : InlineParser
 {
 
     private readonly AnimalKeywordMapping _mapping;

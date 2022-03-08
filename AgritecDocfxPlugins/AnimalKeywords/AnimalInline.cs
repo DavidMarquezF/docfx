@@ -8,7 +8,7 @@ using Markdig.Syntax.Inlines;
 
 namespace AgritecDocfxPlugins.AnimalKeywords;
 
-internal class AnimalInline : LiteralInline
+public class AnimalInline : LiteralInline
 {
     // Inherit from LiteralInline so that rendering is already handled by default
 

@@ -1,6 +1,6 @@
 namespace AgritecDocfxPlugins.AnimalKeywords
 {
-    internal class AnimalKeywordMapping
+    public class AnimalKeywordMapping
     {
         internal CompactPrefixTree<string> PrefixTree { get; }
         internal char[] OpeningCharacters { get; }
