@@ -49,6 +49,7 @@
     <ProjectReference Include="../docfx-api-dotnet/docfx-api-dotnet.csproj" />
     <ProjectReference Include="../Microsoft.Docs.MarkdigExtensions/Microsoft.Docs.MarkdigExtensions.csproj" />
     <ProjectReference Include="../Microsoft.Docs.Build.Specialized/Microsoft.Docs.Build.Specialized.csproj" />
+    <ProjectReference Include="..\..\AgritecDocfxPlugins\AgritecDocfxPlugins.csproj" />
   </ItemGroup>
 
 </Project>

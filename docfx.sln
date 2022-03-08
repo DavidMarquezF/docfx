@@ -20,7 +20,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Docs.Build.Specialized", "src\Microsoft.Docs.Build.Specialized\Microsoft.Docs.Build.Specialized.csproj", "{92FB16D7-A628-41FA-89C1-E2905A8032F7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docfx.SpecTest", "test\docfx.SpecTest\docfx.SpecTest.csproj", "{96A85859-BF5C-4BCC-BCCF-7BDFB38B016D}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docfx-api-dotnet", "src\docfx-api-dotnet\docfx-api-dotnet.csproj", "{16C9642E-4910-4250-AF1C-8C31EA061B48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgritecDocfxPlugins", "AgritecDocfxPlugins\AgritecDocfxPlugins.csproj", "{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -128,6 +131,18 @@ Global
 		{16C9642E-4910-4250-AF1C-8C31EA061B48}.Release|x64.Build.0 = Release|Any CPU
 		{16C9642E-4910-4250-AF1C-8C31EA061B48}.Release|x86.ActiveCfg = Release|Any CPU
 		{16C9642E-4910-4250-AF1C-8C31EA061B48}.Release|x86.Build.0 = Release|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Release|x64.Build.0 = Release|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,6 +156,7 @@ Global
 		{92FB16D7-A628-41FA-89C1-E2905A8032F7} = {D9F346F2-6435-4FD4-8980-33233FC585A6}
 		{96A85859-BF5C-4BCC-BCCF-7BDFB38B016D} = {5BE2024B-B512-492C-87AB-E8C7D3B3F3AE}
 		{16C9642E-4910-4250-AF1C-8C31EA061B48} = {D9F346F2-6435-4FD4-8980-33233FC585A6}
+		{EF8DFDFA-DFE8-4E75-A41A-753FD00C635A} = {D9F346F2-6435-4FD4-8980-33233FC585A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC590A45-FAD1-4FA6-A5AA-40C7BD265605}

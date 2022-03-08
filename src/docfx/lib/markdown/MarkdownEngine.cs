@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System.Text;
+using AgritecDocfxPlugins.AnimalKeywords;
 using Markdig;
 using Markdig.Extensions.AutoIdentifiers;
 using Markdig.Extensions.EmphasisExtras;
@@ -164,7 +165,7 @@ internal class MarkdownEngine
 
     private MarkdownPipelineBuilder CreateMarkdownPipelineBuilder()
     {
-        return new MarkdownPipelineBuilder()
+        var pipe = new MarkdownPipelineBuilder()
             .UseHeadingIdRewriter()
             .UseTabGroup(_markdownContext)
             .UseInteractiveCode()
@@ -200,6 +201,9 @@ internal class MarkdownEngine
             .UseXref(GetXref)
             .UseHtml(GetErrors, GetLink, GetXref, _htmlSanitizer, _documentProvider)
             .UseExtractTitle(this, GetConceptual);
+
+        pipe.Extensions.AddIfNotAlready(new AnimalKeywordExtension());
+        return pipe;
     }
 
     private static MarkdownPipeline CreateTocMarkdownPipeline()

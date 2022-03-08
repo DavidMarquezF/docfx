@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="C:\Users\david\Documents\GitHub\docfx\Menees.Analyzers.Settings.xml" />
+    <AdditionalFiles Remove="C:\Users\david\Documents\GitHub\docfx\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\david\Documents\GitHub\docfx\/docs-logo-ms.png" />
+    <None Remove="C:\Users\david\Documents\GitHub\docfx\/README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Markdig" Version="0.27.0" />
+  </ItemGroup>
+
+</Project>
