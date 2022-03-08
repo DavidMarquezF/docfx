@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <nullable>disable</nullable>
@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AgritecDocfxPlugins\AgritecDocfxPlugins.csproj" />
+    <ProjectReference Include="..\..\src\AgritecDocfxPlugins\AgritecDocfxPlugins.csproj" />
     <ProjectReference Include="..\..\src\Microsoft.Docs.MarkdigExtensions\Microsoft.Docs.MarkdigExtensions.csproj" />
   </ItemGroup>
 
