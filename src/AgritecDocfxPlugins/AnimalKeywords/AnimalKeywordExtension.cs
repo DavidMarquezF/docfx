@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Markdig;
+using Markdig.Parsers.Inlines;
 using Markdig.Renderers;
 
 namespace AgritecDocfxPlugins.AnimalKeywords;
@@ -14,11 +15,7 @@ public class AnimalKeywordExtension : IMarkdownExtension
 {
     public void Setup(MarkdownPipelineBuilder pipeline)
     {
-        if (!pipeline.InlineParsers.Contains<AnimalKeywordParser>())
-        {
-            pipeline.InlineParsers.Insert(0, new AnimalKeywordParser(new AnimalKeywordMapping(Profile.POR)));
-        }
-
+        pipeline.InlineParsers.InsertBefore<AutolineInlineParser>(new AnimalKeywordParser(new AnimalKeywordMapping(Profile.POR)));
     }
 
     public void Setup(MarkdownPipeline pipeline, IMarkdownRenderer renderer)

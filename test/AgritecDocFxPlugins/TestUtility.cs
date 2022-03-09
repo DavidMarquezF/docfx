@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using AgritecDocfxPlugins;
 using AgritecDocfxPlugins.AnimalKeywords;
 using Markdig;
 using Markdig.Syntax;
@@ -36,10 +37,22 @@ public static class TestUtility
             logError: Log(),
             readFile: ReadFile);
 
-        var pipelineBuilder = new MarkdownPipelineBuilder();
-        pipelineBuilder.Extensions.AddIfNotAlready(new AnimalKeywordExtension());
+        var pipelineBuilder = new MarkdownPipelineBuilder()
+          .UseAnimalKeyword()
+            .UseHeadingIdRewriter()
+            .UseInteractiveCode()
 
-      
+            .UseMediaLinks()
+            .UsePipeTables()
+            .UseAutoLinks(new() { UseHttpsForWWWLinks = true })
+
+            .UseXref()
+            .UseEmojiAndSmiley(false)
+
+            .UseNoloc();
+           
+
+
 
         var pipeline = pipelineBuilder.Build();
 
