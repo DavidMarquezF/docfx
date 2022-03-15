@@ -38,7 +38,7 @@ public static class TestUtility
             readFile: ReadFile);
 
         var pipelineBuilder = new MarkdownPipelineBuilder()
-          .UseAnimalKeyword()
+          .UseAgritecExtensions(markdownContext)
             .UseHeadingIdRewriter()
             .UseInteractiveCode()
 

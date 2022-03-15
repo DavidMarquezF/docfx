@@ -167,7 +167,7 @@ internal class MarkdownEngine
     private MarkdownPipelineBuilder CreateMarkdownPipelineBuilder()
     {
         var pipe = new MarkdownPipelineBuilder()
-            .UseAnimalKeyword()
+            .UseAgritecExtensions(_markdownContext)
             .UseHeadingIdRewriter()
             .UseTabGroup(_markdownContext)
             .UseInteractiveCode()
