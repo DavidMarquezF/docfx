@@ -36,8 +36,9 @@ internal class HtmlReportSnippetRenderer : HtmlObjectRenderer<ReportSnippet>
           }*/
 
         var content = new StringBuilder();
-        content.AppendLine($"![Report image]({imagePath})");
         content.AppendLine($"[Download PDF example]({pdfPath})"); // TODO extract TOKEN from context with the translated string
+        content.AppendLine("");
+        content.AppendLine($"![Report image]({imagePath})");
         renderer.Write(Markdown.ToHtml(content.ToString(), _pipeline));
 
     }
