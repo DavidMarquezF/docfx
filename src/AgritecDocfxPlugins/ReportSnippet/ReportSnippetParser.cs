@@ -7,6 +7,9 @@ using Microsoft.Docs.MarkdigExtensions;
 
 namespace AgritecDocfxPlugins;
 
+/// <summary>
+/// Used to expand the markdown to show a pdf and image for a repor
+/// </summary>
 public class ReportSnippetParser : BlockParser
 {
     private const string StartString = "[!agr-report";
