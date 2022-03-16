@@ -20,6 +20,7 @@ internal class HtmlReportSnippetRenderer : HtmlObjectRenderer<ReportSnippet>
     public HtmlReportSnippetRenderer(MarkdownContext context, MarkdownPipeline pipeline)
     {
         _context = context;
+        _pipeline = pipeline;
     }
 
     protected override void Write(HtmlRenderer renderer, ReportSnippet obj)

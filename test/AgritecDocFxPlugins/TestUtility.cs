@@ -38,19 +38,11 @@ public static class TestUtility
             readFile: ReadFile);
 
         var pipelineBuilder = new MarkdownPipelineBuilder()
-          .UseAgritecExtensions(markdownContext)
-            .UseHeadingIdRewriter()
-            .UseInteractiveCode()
-
-            .UseMediaLinks()
-            .UsePipeTables()
-            .UseAutoLinks(new() { UseHttpsForWWWLinks = true })
-
-            .UseXref()
-            .UseEmojiAndSmiley(false)
-
-            .UseNoloc();
-           
+                         .UseAgritecExtensions(markdownContext)
+             .UseDocfxExtensions(markdownContext)
+            .UseYamlFrontMatter();
+         
+         
 
 
 

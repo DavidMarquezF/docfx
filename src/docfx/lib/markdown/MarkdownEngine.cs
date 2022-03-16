@@ -167,7 +167,6 @@ internal class MarkdownEngine
     private MarkdownPipelineBuilder CreateMarkdownPipelineBuilder()
     {
         var pipe = new MarkdownPipelineBuilder()
-            .UseAgritecExtensions(_markdownContext)
             .UseHeadingIdRewriter()
             .UseTabGroup(_markdownContext)
             .UseInteractiveCode()
@@ -191,6 +190,7 @@ internal class MarkdownEngine
             .UseNoloc()
             .UseTelemetry(_documentProvider)
             .UseMonikerZone(ParseMonikerRange)
+            .UseAgritecExtensions(_markdownContext)
 
             // Extensions before this line sees inclusion AST twice:
             // - Once AST for the entry file without InclusionBlock expanded
