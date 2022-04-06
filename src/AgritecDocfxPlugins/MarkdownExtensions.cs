@@ -11,13 +11,13 @@ public static class AgritecExtensions
 {
     public static MarkdownPipelineBuilder UseAgritecExtensions(this MarkdownPipelineBuilder pipeline, MarkdownContext context)
     {
-        return pipeline.UseAnimalKeyword().UseReportSnippet(context).UseProfileConditional(context);
+        return pipeline.UseAnimalKeyword(context).UseReportSnippet(context).UseProfileConditional(context);
     }
 
 
-    public static MarkdownPipelineBuilder UseAnimalKeyword(this MarkdownPipelineBuilder pipeline)
+    public static MarkdownPipelineBuilder UseAnimalKeyword(this MarkdownPipelineBuilder pipeline, MarkdownContext context)
     {
-        pipeline.Extensions.AddIfNotAlready(new AnimalKeywords.AnimalKeywordExtension());
+        pipeline.Extensions.AddIfNotAlready(new AnimalKeywords.AnimalKeywordExtension(context));
         return pipeline;
     }
 

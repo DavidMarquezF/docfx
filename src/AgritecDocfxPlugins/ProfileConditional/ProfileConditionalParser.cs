@@ -148,7 +148,7 @@ internal class ProfileConditionalParser : BlockParser
                 _context.LogWarning("invalid-profile-range", $"No \"::: {EndString}\" found for \"{monikerRange.ProfileRange}\", Profile does not end explicitly.", block);
             else if (monikerRange.ProfileRange != null)
             {
-                var profile = _context.GetToken("agr-profile");
+                var profile = Profile.GetProfile(_context);
                 if (profile == null)
                 {
                     _context.LogWarning("missing-profile", $"No agritec profile provided in tokens. Showing the text by default", block);
