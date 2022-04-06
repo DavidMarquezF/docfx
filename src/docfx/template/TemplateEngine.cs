@@ -250,8 +250,9 @@ internal class TemplateEngine
             return localeTokens ?? new JObject();
         }
         JObject profileObk = new JObject();
-        JsonUtility.SetProperty(profileObk, "agr-profile", this._profile);
+        JsonUtility.SetProperty(profileObk, "agr-profile", _profile);
         JsonUtility.Merge(defaultTokens, localeTokens);
+        JsonUtility.Merge(defaultTokens, profileObk);
         return defaultTokens;
     }
 }
