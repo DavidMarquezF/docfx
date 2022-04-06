@@ -14,7 +14,7 @@ namespace AgritecDocfxPlugins.AnimalKeywords
                 };
         }
 
-        public AnimalKeywordMapping(string profile): this(GetKeywordsForProfile(profile))
+        public AnimalKeywordMapping(string profile): this(GetKeywordsForProfile(profile ?? Profile.POR))
         {
            
         }
