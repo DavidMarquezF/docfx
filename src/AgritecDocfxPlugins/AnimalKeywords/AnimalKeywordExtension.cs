@@ -22,7 +22,7 @@ public class AnimalKeywordExtension : IMarkdownExtension
     }
     public void Setup(MarkdownPipelineBuilder pipeline)
     {
-        pipeline.InlineParsers.InsertBefore<AutolineInlineParser>(new AnimalKeywordParser(new AnimalKeywordMapping(Profile.GetProfile(_context))));
+        pipeline.InlineParsers.InsertBefore<AutolineInlineParser>(new AnimalKeywordParser(_context));
     }
 
     public void Setup(MarkdownPipeline pipeline, IMarkdownRenderer renderer)

@@ -1,5 +1,6 @@
 using Markdig.Helpers;
 using Markdig.Parsers;
+using Microsoft.Docs.MarkdigExtensions;
 
 namespace AgritecDocfxPlugins.AnimalKeywords;
 
@@ -7,14 +8,16 @@ public class AnimalKeywordParser : InlineParser
 {
 
     private readonly AnimalKeywordMapping _mapping;
+    private readonly MarkdownContext _context;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AnimalKeywordParser"/> class.
     /// </summary>
-    public AnimalKeywordParser(AnimalKeywordMapping mapping)
+    public AnimalKeywordParser(MarkdownContext context)
     {
         OpeningCharacters = new[] { '{' };
-        _mapping = mapping;
+        _context = context;
+        _mapping = new AnimalKeywordMapping(Profile.GetProfile(_context));
     }
 
     public override bool Match(InlineProcessor processor, ref StringSlice slice)
