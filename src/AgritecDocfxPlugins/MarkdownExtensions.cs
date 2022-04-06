@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using AgritecDocfxPlugins.ProfileConditional;
 using Markdig;
 using Microsoft.Docs.MarkdigExtensions;
 
@@ -10,7 +11,7 @@ public static class AgritecExtensions
 {
     public static MarkdownPipelineBuilder UseAgritecExtensions(this MarkdownPipelineBuilder pipeline, MarkdownContext context)
     {
-        return pipeline.UseAnimalKeyword().UseReportSnippet(context);
+        return pipeline.UseAnimalKeyword().UseReportSnippet(context).UseProfileConditional(context);
     }
 
 
@@ -23,6 +24,12 @@ public static class AgritecExtensions
     public static MarkdownPipelineBuilder UseReportSnippet(this MarkdownPipelineBuilder pipeline, MarkdownContext context)
     {
         pipeline.Extensions.AddIfNotAlready(new ReportSnippetExtension(context));
+        return pipeline;
+    }
+
+    public static MarkdownPipelineBuilder UseProfileConditional(this MarkdownPipelineBuilder pipeline, MarkdownContext context)
+    {
+        pipeline.Extensions.AddIfNotAlready(new ProfileConditionalExtension(context));
         return pipeline;
     }
 }
