@@ -22,12 +22,14 @@ internal class TemplateEngine
     private readonly string _locale;
     private readonly CultureInfo _cultureInfo;
     private readonly BookmarkValidator? _bookmarkValidator;
+    private readonly string? _profile;
 
     public static TemplateEngine CreateTemplateEngine(
         ErrorBuilder errors,
         Config config,
         PackageResolver packageResolver,
         string locale,
+        string? profile,
         BookmarkValidator? bookmarkValidator = null)
     {
         var template = config.Template;
@@ -39,12 +41,12 @@ internal class TemplateEngine
         }
         var package = packageResolver.ResolveAsPackage(template, templateFetchOptions);
 
-        return new TemplateEngine(errors, config, package, locale, bookmarkValidator);
+        return new TemplateEngine(errors, config, package, locale, profile, bookmarkValidator);
     }
 
-    public static TemplateEngine CreateTemplateEngine(ErrorBuilder errors, Config config, string locale, Package package)
+    public static TemplateEngine CreateTemplateEngine(ErrorBuilder errors, Config config, string locale, string? profile, Package package)
     {
-        return new TemplateEngine(errors, config, package, locale);
+        return new TemplateEngine(errors, config, package, locale, profile);
     }
 
     private TemplateEngine(
@@ -52,11 +54,13 @@ internal class TemplateEngine
          Config config,
          Package package,
          string locale,
+         string? profile,
          BookmarkValidator? bookmarkValidator = null)
     {
         _errors = errors;
         _config = config;
         _locale = locale;
+        _profile = profile;
         _cultureInfo = LocalizationUtility.CreateCultureInfo(_locale);
         _package = package;
         _templateDefinition = new(() => _package.TryLoadYamlOrJson<TemplateDefinition>(errors, "template") ?? new());
@@ -245,6 +249,8 @@ internal class TemplateEngine
         {
             return localeTokens ?? new JObject();
         }
+        JObject profileObk = new JObject();
+        JsonUtility.SetProperty(profileObk, "agr-profile", this._profile);
         JsonUtility.Merge(defaultTokens, localeTokens);
         return defaultTokens;
     }

@@ -23,12 +23,17 @@ internal class BuildOptions
     /// </summary>
     public string Locale { get; }
 
+    /// <summary>
+    /// Sets the animal profile
+    /// </summary>
+    public string Profile { get; }
+
     public CultureInfo Culture { get; }
 
     public bool IsLocalizedBuild => FallbackDocsetPath != null;
 
     public BuildOptions(
-        string docsetPath, string? fallbackDocsetPath, string? outputPath, Repository? repository, PreloadConfig config, Package package)
+        string docsetPath, string? fallbackDocsetPath, string? outputPath, Repository? repository, PreloadConfig config, Package package, string profile)
     {
         Repository = repository;
         DocsetPath = package.GetFullFilePath(new PathString(docsetPath));
@@ -38,6 +43,7 @@ internal class BuildOptions
         }
         OutputPath = package.GetFullFilePath(new PathString(outputPath ?? Path.Combine(docsetPath, config.OutputPath)));
         Locale = (LocalizationUtility.GetLocale(repository) ?? config.DefaultLocale).ToLowerInvariant();
+        Profile = profile;
         Culture = LocalizationUtility.CreateCultureInfo(Locale);
     }
 }

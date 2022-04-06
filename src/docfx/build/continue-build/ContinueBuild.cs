@@ -35,7 +35,7 @@ internal static class ContinueBuild
         var fileResolver = new FileResolver(package);
         var jsonSchemaLoader = new JsonSchemaLoader(fileResolver);
         var jsonSchemaProvider = new JsonSchemaProvider(config, package, jsonSchemaLoader);
-        var templateEngine = TemplateEngine.CreateTemplateEngine(errors, config, locale, package);
+        var templateEngine = TemplateEngine.CreateTemplateEngine(errors, config, locale, options.Profile, package);
 
         Directory.CreateDirectory(outputDir);
 
