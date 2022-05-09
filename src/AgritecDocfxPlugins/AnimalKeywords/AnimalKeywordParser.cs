@@ -25,13 +25,14 @@ public class AnimalKeywordParser : InlineParser
         var startPosition = slice.Start;
         slice.NextChar();    // Skip the first {
         var start = slice.Start;
-        if (!_mapping.PrefixTree.TryMatchLongest(slice.Text.AsSpan(slice.Start, slice.Length), out KeyValuePair<string, string> match))
+        if (!_mapping.PrefixTree.TryMatchLongest(slice.Text.ToLower().AsSpan(slice.Start, slice.Length), out KeyValuePair<string, string> match))
             return false;
 
         if (slice.PeekCharExtra(match.Key.Length) != '}')
             return false;
 
-        processor.Inline = new AnimalInline(match.Value)
+
+        processor.Inline = new AnimalInline(string.Concat(Char.IsUpper(slice.Text[slice.Start]) ? match.Value[0].ToString().ToUpper() : match.Value[0].ToString().ToLower(), match.Value.Substring(1)))
         {
             Span =
             {

@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Docs.MarkdigExtensions;
 
 namespace AgritecDocfxPlugins
@@ -13,6 +8,23 @@ namespace AgritecDocfxPlugins
         public const string VAC = "vac";
         public const string CUN = "cun";
         public const string OVI = "ovi";
+
+        public static string GetProfileName(string prof)
+        {
+            switch (prof)
+            {
+                case POR:
+                    return "Porcitec";
+                case VAC:
+                    return "Vaquitec";
+                case CUN:
+                    return "Cunitec";
+                case OVI:
+                    return "Ovitec";
+                default:
+                    throw new ArgumentException("Invalid profile");
+            }
+        }
 
         internal static string GetProfile(MarkdownContext context)
         {

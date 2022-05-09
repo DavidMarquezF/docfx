@@ -24,4 +24,22 @@ public class AnimalKeywordTest
 
         TestUtility.VerifyMarkup(content, expected);
     }
+
+    [Fact]
+    public void TestAppLowercase()
+    {
+        var content = @"**content :** {app}";
+        var expected = @"<p><strong>content :</strong> porcitec</p>";
+
+        TestUtility.VerifyMarkup(content, expected);
+    }
+
+    [Fact]
+    public void TestAppUppercase()
+    {
+        var content = @"**content :** {App}";
+        var expected = @"<p><strong>content :</strong> Porcitec</p>";
+
+        TestUtility.VerifyMarkup(content, expected);
+    }
 }
