@@ -33,7 +33,7 @@ internal class BuildOptions
     public bool IsLocalizedBuild => FallbackDocsetPath != null;
 
     public BuildOptions(
-        string docsetPath, string? fallbackDocsetPath, string? outputPath, Repository? repository, PreloadConfig config, Package package, string profile)
+        string docsetPath, string? fallbackDocsetPath, string? outputPath, Repository? repository, PreloadConfig config, Package package, string locale, string profile)
     {
         Repository = repository;
         DocsetPath = package.GetFullFilePath(new PathString(docsetPath));
@@ -42,7 +42,7 @@ internal class BuildOptions
             FallbackDocsetPath = package.GetFullFilePath(new PathString(fallbackDocsetPath));
         }
         OutputPath = package.GetFullFilePath(new PathString(outputPath ?? Path.Combine(docsetPath, config.OutputPath)));
-        Locale = (LocalizationUtility.GetLocale(repository) ?? config.DefaultLocale).ToLowerInvariant();
+        Locale = (locale ?? LocalizationUtility.GetLocale(repository) ?? config.DefaultLocale).ToLowerInvariant();
         Profile = profile;
         Culture = LocalizationUtility.CreateCultureInfo(Locale);
     }

@@ -52,7 +52,7 @@ namespace AgritecDocfxPlugins.AnimalKeywords
            
         }
 
-        public AnimalKeywordMapping(string profile, string locale) : this(GetKeywordsForProfile(profile ?? Profile.POR, locale ?? "en"))
+        public AnimalKeywordMapping(string profile, string locale) : this(GetKeywordsForProfile(string.IsNullOrEmpty(profile) ? Profile.POR: profile, locale ?? "en"))
         {
 
         }
