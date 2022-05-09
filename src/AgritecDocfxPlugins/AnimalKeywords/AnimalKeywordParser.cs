@@ -17,7 +17,7 @@ public class AnimalKeywordParser : InlineParser
     {
         OpeningCharacters = new[] { '{' };
         _context = context;
-        _mapping = new AnimalKeywordMapping(Profile.GetProfile(_context));
+        _mapping = new AnimalKeywordMapping(AgrContext.GetProfile(_context), AgrContext.GetLocale(_context));
     }
 
     public override bool Match(InlineProcessor processor, ref StringSlice slice)

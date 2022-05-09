@@ -5,9 +5,26 @@ namespace AgritecDocfxPlugins.AnimalKeywords
         internal CompactPrefixTree<string> PrefixTree { get; }
         internal char[] OpeningCharacters { get; }
 
-        public static IDictionary<string, string> GetKeywordsForProfile(string profile)
+        public static IDictionary<string, string> GetKeywordsForProfile(string profile, string locale)
         {
-            var dict = new Dictionary<string, string>() {
+            if(locale == "es")
+            {
+                var dict = new Dictionary<string, string>() {
+                            { "app", Profile.GetProfileName(profile)},
+                            { "nullipara", "Nulipara"},
+                            { "birthing", "Parto"},
+                            { "prebirthing", "Preparto" },
+                            { "birth", "Parir"},
+                            { "prebirth", "Preparto" },
+                            { "male", "Macho" },
+                            { "males", "Machos"}
+                        };
+
+                return dict;
+            }
+            else
+            {
+                var dict = new Dictionary<string, string>() {
                             { "app", Profile.GetProfileName(profile)},
                             { "nullipara", "Nullipara"},
                             { "birthing", "Birthing"},
@@ -18,22 +35,24 @@ namespace AgritecDocfxPlugins.AnimalKeywords
                             { "males", "Males"}
                         };
 
-            switch (profile)
-            {
-                case Profile.POR:
-                    dict["birthing"] = "Farrowing";
-                    dict["prebirthing"] = "Prefarrowing";
-                    dict["birth"] = "Farrow";
-                    dict["prebirth"] = "Prefarrow";
-                    dict["male"] = "Boar";
-                    dict["males"] = "Boars";
-                    break;
-            }
+                switch (profile)
+                {
+                    case Profile.POR:
+                        dict["birthing"] = "Farrowing";
+                        dict["prebirthing"] = "Prefarrowing";
+                        dict["birth"] = "Farrow";
+                        dict["prebirth"] = "Prefarrow";
+                        dict["male"] = "Boar";
+                        dict["males"] = "Boars";
+                        break;
+                }
 
-            return dict;
+                return dict;
+            }
+           
         }
 
-        public AnimalKeywordMapping(string profile) : this(GetKeywordsForProfile(profile ?? Profile.POR))
+        public AnimalKeywordMapping(string profile, string locale) : this(GetKeywordsForProfile(profile ?? Profile.POR, locale ?? "en"))
         {
 
         }

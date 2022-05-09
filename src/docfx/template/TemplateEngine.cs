@@ -251,6 +251,7 @@ internal class TemplateEngine
         }
         JObject profileObk = new JObject();
         JsonUtility.SetProperty(profileObk, "agr-profile", _profile);
+        JsonUtility.SetProperty(profileObk, "agr-lang", (_locale ?? "en").Split('-')[0]);
         JsonUtility.Merge(defaultTokens, localeTokens);
         JsonUtility.Merge(defaultTokens, profileObk);
         return defaultTokens;

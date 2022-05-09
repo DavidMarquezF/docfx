@@ -25,10 +25,5 @@ namespace AgritecDocfxPlugins
                     throw new ArgumentException("Invalid profile");
             }
         }
-
-        internal static string GetProfile(MarkdownContext context)
-        {
-            return context.GetToken("agr-profile");
-        }
     }
 }

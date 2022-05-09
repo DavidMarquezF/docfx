@@ -17,6 +17,26 @@ public class AnimalKeywordTest
     }
 
     [Fact]
+    public void AnimalKeywordTestGeneralVac()
+    {
+        var content = @"**content :** {Birthing}";
+        var expected = @"<p><strong>content :</strong> Birthing</p>";
+
+        TestUtility.VerifyMarkup(content, expected, tokens: new Dictionary<string, string>() { { "agr-profile", "vac" } });
+    }
+
+
+    [Fact]
+    public void AnimalKeywordTestGeneralVacES()
+    {
+        var content = @"**content :** {Birthing}";
+        var expected = @"<p><strong>content :</strong> Parto</p>";
+
+        TestUtility.VerifyMarkup(content, expected, tokens: new Dictionary<string, string>() { { "agr-profile", "vac" }, { "agr-lang", "es"} });
+    }
+
+
+    [Fact]
     public void AnimalKeywordTestNoSpace()
     {
         var content = @"**content :** asda{Birthing}asdasd";
