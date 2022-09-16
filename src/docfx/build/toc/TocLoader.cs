@@ -4,6 +4,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using docfx.build.agritec;
 using Microsoft.Docs.Validation;
 
 namespace Microsoft.Docs.Build;
@@ -21,6 +22,7 @@ internal class TocLoader
     private readonly ErrorBuilder _errors;
     private readonly IReadOnlyDictionary<string, JoinTOCConfig> _joinTOCConfigs;
     private readonly BuildScope _buildScope;
+    private readonly string _profile;
 
     private readonly MemoryCache<FilePath, Watch<(TocNode, List<FilePath>, List<FilePath>, List<FilePath>)>> _cache = new();
 
@@ -39,7 +41,8 @@ internal class TocLoader
         ContentValidator contentValidator,
         Config config,
         ErrorBuilder errors,
-        BuildScope buildScope)
+        BuildScope buildScope,
+        string profile)
     {
         _buildOptions = buildOptions;
         _input = input;
@@ -52,6 +55,7 @@ internal class TocLoader
         _errors = errors;
         _buildScope = buildScope;
         _joinTOCConfigs = config.JoinTOC.Where(x => x.ReferenceToc != null).ToDictionary(x => PathUtility.Normalize(x.ReferenceToc!));
+        _profile = profile;
     }
 
     public static TocHrefType GetHrefType(string? href)
@@ -164,6 +168,9 @@ internal class TocLoader
             s_recursionDetector.Value = recursionDetector;
 
             var node = _parser.Parse(file, _errors);
+
+            if (!string.IsNullOrEmpty(_profile))
+                node = ProfileUtils.RemoveTocItemsFromProfile(_profile, node);
 
             // Generate service pages.
             if (_joinTOCConfigs.TryGetValue(file.Path, out var joinTOCConfig) && joinTOCConfig != null)
