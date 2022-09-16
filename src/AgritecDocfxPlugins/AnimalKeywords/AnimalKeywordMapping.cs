@@ -7,10 +7,12 @@ namespace AgritecDocfxPlugins.AnimalKeywords
 
         public static IDictionary<string, string> GetKeywordsForProfile(string profile, string locale)
         {
-            if(locale == "es")
+            if (locale == "es")
             {
                 var dict = new Dictionary<string, string>() {
                             { "app", Profile.GetProfileName(profile)},
+                            { "appshort", profile},
+                            {"culture", locale},
                             { "nullipara", "Nulipara"},
                             { "birthing", "Parto"},
                             { "prebirthing", "Preparto" },
@@ -26,6 +28,8 @@ namespace AgritecDocfxPlugins.AnimalKeywords
             {
                 var dict = new Dictionary<string, string>() {
                             { "app", Profile.GetProfileName(profile)},
+                            { "appshort", profile},
+                            {"culture", locale},
                             { "nullipara", "Nullipara"},
                             { "birthing", "Birthing"},
                             { "prebirthing", "Prebirthing" },
@@ -49,10 +53,10 @@ namespace AgritecDocfxPlugins.AnimalKeywords
 
                 return dict;
             }
-           
+
         }
 
-        public AnimalKeywordMapping(string profile, string locale) : this(GetKeywordsForProfile(string.IsNullOrEmpty(profile) ? Profile.POR: profile, locale ?? "en"))
+        public AnimalKeywordMapping(string profile, string locale) : this(GetKeywordsForProfile(string.IsNullOrEmpty(profile) ? Profile.POR : profile, locale ?? "en"))
         {
 
         }

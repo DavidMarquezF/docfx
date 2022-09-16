@@ -17,6 +17,15 @@ public class AnimalKeywordTest
     }
 
     [Fact]
+    public void MultipleAnimalKeywordTestGeneral()
+    {
+        var content = @"**content :** {Birthing} {app}";
+        var expected = @"<p><strong>content :</strong> Farrowing porcitec</p>";
+
+        TestUtility.VerifyMarkup(content, expected);
+    }
+
+    [Fact]
     public void AnimalKeywordTestGeneralVac()
     {
         var content = @"**content :** {Birthing}";
@@ -41,6 +50,15 @@ public class AnimalKeywordTest
     {
         var content = @"**content :** asda{Birthing}asdasd";
         var expected = @"<p><strong>content :</strong> asdaFarrowingasdasd</p>";
+
+        TestUtility.VerifyMarkup(content, expected);
+    }
+
+    [Fact]
+    public void AnimalKeywordLinks()
+    {
+        var content = @"[{app}](/{appshort}/test) [asdasdsa](http://asdasdasd/test/{nondummy})";
+        var expected = "<p><a href=\"/por/test\">porcitec</a> <a href=\"http://asdasdasd/test/%7Bnondummy%7D\">asdasdsa</a></p>";
 
         TestUtility.VerifyMarkup(content, expected);
     }

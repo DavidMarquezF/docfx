@@ -7,17 +7,17 @@ namespace AgritecDocfxPlugins.AnimalKeywords;
 public class AnimalKeywordParser : InlineParser
 {
 
-    private readonly AnimalKeywordMapping _mapping;
     private readonly MarkdownContext _context;
+    private readonly AnimalKeywordMapping _mapping;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AnimalKeywordParser"/> class.
     /// </summary>
-    public AnimalKeywordParser(MarkdownContext context)
+    public AnimalKeywordParser(MarkdownContext context, AnimalKeywordMapping mapping)
     {
         OpeningCharacters = new[] { '{' };
         _context = context;
-        _mapping = new AnimalKeywordMapping(AgrContext.GetProfile(_context), AgrContext.GetLocale(_context));
+        _mapping = mapping;
     }
 
     public override bool Match(InlineProcessor processor, ref StringSlice slice)
