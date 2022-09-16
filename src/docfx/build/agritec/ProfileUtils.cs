@@ -15,7 +15,7 @@ internal static class ProfileUtils
 
             var hasFound = node.ExtensionData.TryGetValue("profile", out var profile);
             if (hasFound)
-                return profile.ToString().Split(",").Any(a => currentProfile == a);
+                return profile.ToString().Split(",").Any(a => currentProfile == a.Trim());
             else
                 return true;
         }
