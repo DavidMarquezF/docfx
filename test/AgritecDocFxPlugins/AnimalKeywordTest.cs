@@ -57,7 +57,7 @@ public class AnimalKeywordTest
     [Fact]
     public void AnimalKeywordLinks()
     {
-        var content = @"[{app}](/{appshort}/test) [asdasdsa](http://asdasdasd/test/{nondummy})";
+        var content = @"[{app}](/{profile}/test) [asdasdsa](http://asdasdasd/test/{nondummy})";
         var expected = "<p><a href=\"/por/test\">porcitec</a> <a href=\"http://asdasdasd/test/%7Bnondummy%7D\">asdasdsa</a></p>";
 
         TestUtility.VerifyMarkup(content, expected);

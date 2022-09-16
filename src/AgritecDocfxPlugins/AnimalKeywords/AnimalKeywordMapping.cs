@@ -11,7 +11,7 @@ namespace AgritecDocfxPlugins.AnimalKeywords
             {
                 var dict = new Dictionary<string, string>() {
                             { "app", Profile.GetProfileName(profile)},
-                            { "appshort", profile},
+                            { "profile", profile},
                             {"culture", locale},
                             { "nullipara", "Nulipara"},
                             { "birthing", "Parto"},
@@ -28,7 +28,7 @@ namespace AgritecDocfxPlugins.AnimalKeywords
             {
                 var dict = new Dictionary<string, string>() {
                             { "app", Profile.GetProfileName(profile)},
-                            { "appshort", profile},
+                            { "profile", profile},
                             {"culture", locale},
                             { "nullipara", "Nullipara"},
                             { "birthing", "Birthing"},
